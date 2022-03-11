@@ -1,0 +1,60 @@
+@startuml "Diagramme de classe"
+
+class Artisant {
+    -String nom
+    -String prenom
+    -String adresse
+    -int Salaire
+    -String tel
+    -String specialite
+    +String getNom()
+    +String getPrenom()
+    +String getAdresse()
+    +int getSalaire()
+    +String getTel()
+    +String getSpecialite()
+    +String toString()
+}
+
+class Entreprise {
+    -String nom
+    -String adresse
+    -String tel
+    -ArrayList Artisants
+    +String getTel()
+    +String getAdresse()
+    +String getNom()
+    +int salaireArtisant()
+    +String toString()
+}
+
+class Chantier  {
+    -Date dateDebut
+    -Date dateFin
+    -String Adresse
+    +Date getDateDebut()
+    +Date getDateFin()
+    +String getAdresse()
+    +String toString()
+}
+
+class Affecte {
+    -int NbHeure
+    -String idChantier
+    -String idArtisant
+    -Date dateDebut
+    -Date dateFin
+    +String toString()
+    +int getNbHeure()
+    +String getIdChantier()
+    +String getIdArtisant()
+    +Date getDateDebut()
+    +Date getDateFin()
+}
+
+Artisant "1..*" - "1..*" Entreprise
+Entreprise "1..*" - "0..*" Chantier
+Artisant "1..*" - "0..*" Chantier
+(Artisant, Chantier) .. Affecte
+
+@enduml
